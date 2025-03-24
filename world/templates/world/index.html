@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worlds</title>
+</head>
+<body>
+    {% if countries %}
+    <ul>
+      {% for country in countries %}
+      <li>
+        <a href="{% url 'world:detail' country.adm0_a3 %}">
+          {{ country.name_long }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Empty</p>
+    {% endif %}
+</body>
+</html>
