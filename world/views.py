@@ -28,11 +28,13 @@ def detail(request, iso_code):
             fields=["name"],
         )
         geojson_state = json.loads(geojson_state)
+        
+        name = model_data.name
 
         folium.GeoJson(
             geojson_state,
-            name=model_data.name,
-            tooltip=model_data.type + ' ' + model_data.name,
+            name=name,
+            tooltip=model_data.type_en + ' - ' + name if model_data.type_en else name,
         ).add_to(m)
 
     folium.LayerControl().add_to(m)
